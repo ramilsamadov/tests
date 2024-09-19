@@ -1,0 +1,123 @@
+/* Sidebar ve hamburger menü stilleri */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  height: 100vh;
+  padding-top: 20px;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Başlangıçta gizli */
+  transition: left 0.3s ease;
+  z-index: 1000; /* Sidebar'ın üstte görünmesini sağlarız */
+}
+
+.sidebar.open {
+  left: 0; /* Açıldığında sidebar sol tarafa sıfırlanır */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.sidebar form {
+  display: flex;
+  align-items: center; /* X işaretini butonla hizalar */
+  padding: 10px;
+}
+
+/* X işareti (close button) için stil */
+.close-btn {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px; /* X işaretini arama butonundan ayırmak için boşluk */
+}
+
+/* Hamburger menü */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background-color: black;
+  margin: 4px 0;
+}
+
+/* Küçük ekranlar için (645px ve altı) */
+@media (max-width: 645px) {
+  .hamburger {
+    display: flex; /* Küçük ekranlarda hamburger menü görünür */
+  }
+
+  .sidebar {
+    left: -250px; /* Sidebar başlangıçta gizli */
+  }
+
+  .sidebar.open {
+    left: 0; /* Sidebar hamburger menü ile açıldığında göster */
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .close-btn {
+    display: inline-block; /* Küçük ekranlarda X işareti görünür */
+  }
+}
+
+/* Büyük ekranlar için (645px üstü) */
+@media (min-width: 646px) {
+  .sidebar {
+    left: 0; /* Büyük ekranlarda sidebar sabit kalsın */
+    position: fixed;
+  }
+
+  .main {
+    margin-left: 250px; /* Sidebar genişliği kadar boşluk bırak */
+  }
+
+  .hamburger {
+    display: none; /* Büyük ekranlarda hamburger menü gizli */
+  }
+
+  .close-btn {
+    display: none; /* Büyük ekranlarda X işareti gizli */
+  }
+}
+
+/* Genel stiller */
+.header {
+  background-color: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+}
+
+.main {
+  padding: 20px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
